@@ -1,0 +1,49 @@
+ static boolean gameOver(ArrayList<ArrayList<Integer>> board)
+    {
+    	for(int players=1;players<=2;players++)
+    	{
+    	if(player==1)
+    	{
+    		int stones=0;
+    		int opponentstones=0;
+    		for(int pit=0; pit<pits; pit++)
+    		{
+    			stones+=board.get(PLAYER).get(pit);
+    		}
+    		if(stones==0)
+    		{
+    			for(int i=pits-1; i>=0; i--)
+    			{
+    				opponentstones+=board.get(OPP).get(i);
+    				board.get(0).set(i, 0);
+    			}
+    			Collections.reverse(board.get(OPP));
+    			int opponentMancala=board.get(OPP).get(0);
+    			opponentMancala+=opponentstones;
+    			return true;
+    		}
+    	}
+    	if(player==2)
+    	{
+    		int stones=0;
+    		int opponentstones=0;
+    		for(int i=pits-1; i>=0; i--)
+    		{
+    			stones+=board.get(PLAYER).get(i);
+    		}
+    		if(stones==0)
+    		{
+    			for(int pit=0; pit<pits; pit++)
+    			{
+    				opponentstones+=board.get(OPP).get(pit);
+    				board.get(0).set(pit, 0);
+    			}
+//    			Collections.reverse(board.get(OPP));
+    			int opponentMancala=board.get(OPP).get(board.get(OPP).size()-1);
+    			opponentMancala+=opponentstones;
+    			return true;
+    		}
+    	}
+    	}
+    	return true;
+    }
